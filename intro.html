@@ -50,50 +50,90 @@
 
                 <section>
                     <h3>Co to mikroserwisy?</h3>
-                    <small>I po co?</small>
+                    <p><span style="color: red;">Architektura oparta o mikroserwisy</span> to podejście, w którym tworzona aplikacja ma postać <span style="color: red;">szeregu małych usług</span>, z których każda działa we własnym, <span style="color: red;">oddzielnym procesie</span>. Komunikacja między serwisami odbywa się za pomocą <span style="color: red;">lekkich mechanizmów</span>, często w postaci API HTTP. Każda z usług dostarcza biznesowej wartości i może być <span style="color: red;">wdrażana niezależnie</span> od pozostałych przez automatyczne narzędzia wdrożeniowe. <span style="color: red;">Każda usługa może być wytworzona w innej technologii.<span style="color: red;"></p>
+                    <small><i>M. Folwer</i></small>
                 </section>
 
                 <section>
-                    <img style="background:none; border:none; box-shadow:none;" src="img/poop.jpg" />
+                    <img style="background:none; border:none; box-shadow:none; height: 600px;" src="img/poop.jpg" />
                 </section>
 
                 <section>
-                    <h3>Zalety i wady</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Plusy</th>
-                                <th>Minusy</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Niezależne wdrażanie</td>
-                                <td>Zawodność sieci</td>
-                            </tr>                           
-                            <tr>
-                                <td>Separacja domen</td>
-                                <td class="fragment highlight-red" data-fragment-index="1">Trudne debugowanie</td>
-                            </tr>
-                            <tr>
-                                <td>Łatwiej zrozumieć poszczególne elementy systemu</td>
-                                <td class="fragment highlight-red" data-fragment-index="1">Problematyczne logowanie</td>
-                            </tr>
-                            <tr>
-                                <td>Naturalna konsekwencja prawa Conwaya</td>
-                                <td class="fragment highlight-red" data-fragment-index="1">Zdecentralizowane zarządzanie konfiguracją</td>
-                            </tr>
-                            <tr>
-                                <td>Separacja domen</td>
-                                <td class="fragment highlight-red" data-fragment-index="1">Problem 'service discovery'</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3>Zalety <span style="color: green;">:)</span></h3>
+                    <ul>
+                        <li>Skalowalność</li>
+                        <li>Niezależne wdrażanie</li>
+                        <li>Separacja domen</li>
+                        <li>Łatwiej zrozumieć poszczególne elementy systemu</li>
+                        <li>Naturalna konsekwencja prawa Conwaya</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Wady <span style="color:red;">:&lt;</span></h3>
+                    <ul>
+                        <li>Zawodność sieci</li>
+                        <li>Trudne debugowanie</li>
+                        <li>Problematyczne logowanie</li>
+                        <li>Zdecentralizowane zarządzanie konfiguracją</li>
+                        <li>Problem 'service discovery'</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Co będziemy robić?</h2>
+                </section>
+
+                <section>
+                    <pre>
+                ____   __ 
+               |    | |==|    o  
+             .-|____| |  |   /|\ 
+             | /::::/ |__|   / \ 
+             v
+   .------------------.
+   | Frontend service |
+   '------------------'
+             |          .----------------.
+             |--------->| Metadata Store |
+             |          '----------------'
+             |          .----------------.
+             |--------->| ImageUrl-store |
+             |          '----------------'
+             |          .----------------.
+             |--------->| Review-service |-----------.
+             |          '----------------'           |
+             |                                       |
+             |          .-----------------.          |
+             '--------->| Pricing-service |----------.
+                        '-----------------'          |
+                                                     v
+                                            .----------------.
+                                            | Client-service |
+                                            '----------------'
+                    </pre>
                 </section>
 
                 <section>
                     <h2>Spring Boot &amp; Spring Cloud</h2>
                     <h4>Co to jest i do czego służy</h4>
+                </section>
+
+                <section>
+                    <h3>Spring Core <img style="background:none; border:none; box-shadow:none; height:50px;" src="img/spring-logo.png" /></h3>
+                    <img src="img/spring-core.png" />
+                </section>
+
+                <section>
+                    <h3>Spring Boot Features <img style="background:none; border:none; box-shadow:none; height:50px;" src="img/spring-boot-logo.png" /></h3>
+                    <ul>
+                        <li>Create stand-alone Spring applications</li>
+                        <li>Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)</li>
+                        <li>Provide opinionated 'starter' POMs to simplify your Maven configuration</li>
+                        <li>Automatically configure Spring whenever possible</li>
+                        <li>Provide production-ready features such as metrics, health checks and externalized configuration</li>
+                        <li>Absolutely no code generation and no requirement for XML configuration</li>
+                    </ul>
                 </section>
 
                 <section>
@@ -110,6 +150,7 @@
                     <h2><a href="http://start.spring.io">start.spring.io</a></h2>
                 </section>
 
+
                 <section>
                     <h2 class="fragment shrink" data-fragment-index="1">Spring Cloud <img style="background:none; border:none; box-shadow:none; height:50px;" src="img/spring-cloud-logo.png" /></h2>
                     <h3 class="fragment fade-in" data-fragment-index="1">Service discovery</h3>
@@ -118,12 +159,12 @@
                 <section>
                     <h4>Spring Cloud <img style="background:none; border:none; box-shadow:none; height:30px;" src="img/spring-cloud-logo.png" /></h4>
                     <h3>Zarządzanie konfiguracją</h3>
-                    <img style="background:none; border:none; box-shadow:none;" class="fragment fade-in" src="img/git-sticker.png" />
+                    <img style="background:none; border:none; box-shadow:none; height: 430px;" class="fragment fade-in" src="img/git-sticker.png" />
                 </section>
                 <section>
                     <h4>Spring Cloud <img style="background:none; border:none; box-shadow:none; height:30px;" src="img/spring-cloud-logo.png" /></h4>
                     <h3>Komunikacja pomiędzy serwisami</h3>
-                    <small>TODO</small>
+                    <small>Live</small>
                 </section>
 
                 <section>
@@ -135,13 +176,13 @@
                 <section>
                     <h4>Spring Cloud <img style="background:none; border:none; box-shadow:none; height:30px;" src="img/spring-cloud-logo.png" /></h4>
                     <h3>Administracja, monitorowanie stanu, logowanie</h3>
-                    <small>TODO obrazek eureki, boot admina, kibany, graphany</small>
+                    <small>Eureka, Boot Admina, Kibana, Graphana, ...</small>
                 </section>
 
                 <section>
                     <h4>Spring Cloud <img style="background:none; border:none; box-shadow:none; height:30px;" src="img/spring-cloud-logo.png" /></h4>
-                    <h3>A co z <span class="highligt-red">bezpieczeństwem</span>?</h3>
-                    <img style="background:none; border:none; box-shadow:none;"src="img/nope.jpg" />
+                    <h3>A co z <span style="color: red;">bezpieczeństwem</span>?</h3>
+                    <img style="background:none; border:none; box-shadow:none; height: 500px;" src="img/nope.jpg" class="fragment fade-in" />
                 </section>
             </div>
 
